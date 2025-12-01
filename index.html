@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduResource Hub - Find All Educational Resources in One Place</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>EduResource Hub</h1>
+                </div>
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#resources" class="nav-link">Resources</a>
+                    <a href="#about" class="nav-link">About</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Find All Educational Resources in One Place</h1>
+                    <p class="hero-subtitle">Discover thousands of free and accessible educational resources across all subjects and disciplines</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="total-resources">Loading...</span>
+                            <span class="stat-label">Total Resources</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="total-categories">Loading...</span>
+                            <span class="stat-label">Categories</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Free Access</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-search">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-input" placeholder="Search for resources, subjects, or topics...">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section id="resources" class="filters-section">
+            <div class="container">
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="type-filter">Type:</label>
+                        <select id="type-filter">
+                            <option value="">All Types</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="access-filter">Access:</label>
+                        <select id="access-filter">
+                            <option value="">All Access Types</option>
+                        </select>
+                    </div>
+                    <button id="clear-filters" class="clear-btn">
+                        <i class="fas fa-times"></i> Clear Filters
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Grid -->
+        <section class="resources-section">
+            <div class="container">
+                <div class="resources-header">
+                    <h2>Educational Resources</h2>
+                    <div class="results-count">
+                        <span id="results-count">Loading resources...</span>
+                    </div>
+                </div>
+                <div id="resources-grid" class="resources-grid">
+                    <!-- Resources will be loaded here -->
+                </div>
+                <div id="no-results" class="no-results" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No resources found</h3>
+                    <p>Try adjusting your search or filters to find what you're looking for.</p>
+                </div>
+                <div id="loading" class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading resources...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>About EduResource Hub</h2>
+                    <p>EduResource Hub is your one-stop destination for discovering educational resources across all subjects and disciplines. We've curated thousands of free and accessible resources to help students, educators, and lifelong learners find exactly what they need.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-search"></i>
+                            <h3>Easy Search</h3>
+                            <p>Quickly find resources with our powerful search and filter system</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-tags"></i>
+                            <h3>Organized Categories</h3>
+                            <p>Resources are carefully categorized by subject and type</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-heart"></i>
+                            <h3>Free Access</h3>
+                            <p>All resources are free or open access for everyone</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EduResource Hub</h3>
+                    <p>Making education accessible to everyone through curated resources.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Have suggestions for new resources? Let us know!</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EduResource Hub. Built with ❤️ for education.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
