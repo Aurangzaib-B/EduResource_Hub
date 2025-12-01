@@ -7,6 +7,75 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .profile-section {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.profile-section h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.profile-section p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.highlight {
+  color: #0073e6;
+  font-weight: bold;
+}
+
+.profile-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.link-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.link-box i {
+  font-size: 1.2rem;
+}
+
+.link-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.linkedin-link {
+  background: #0077b5;
+}
+
+.github-link {
+  background: #333;
+}
+
+.instagram-link {
+  background: #e1306c;
+}
+
+    </style>
 </head>
 <body>
     <header>
@@ -136,6 +205,30 @@
             </div>
         </section>
     </main>
+    <section id="about-me" class="profile-section">
+  <h2>About Me</h2>
+  <p>
+    I'm <strong>Amar Jaleel</strong>, a Computer Science student passionate about 
+    <span class="highlight">AI</span>, <span class="highlight">cybersecurity</span>, 
+    and <span class="highlight">data analytics</span>.
+  </p>
+
+  <!-- Social Links -->
+  <div class="profile-links">
+    <a href="https://pk.linkedin.com/in/amarjaleel" target="_blank" class="link-box linkedin-link">
+      <i class="fab fa-linkedin"></i>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://github.com/amarjaleelbanbhan/portfolio" target="_blank" class="link-box github-link">
+      <i class="fab fa-github"></i>
+      <span>GitHub</span>
+    </a>
+    <a href="https://www.instagram.com/amarjaleel_/" target="_blank" class="link-box instagram-link">
+      <i class="fab fa-instagram"></i>
+      <span>Instagram</span>
+    </a>
+  </div>
+</section>
 
     <footer>
         <div class="container">
@@ -166,3 +259,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
