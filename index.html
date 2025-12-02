@@ -8,334 +8,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #5B63FF;
-            --secondary-color: #0073e6;
-            --dark-bg: #1a1f3a;
-            --text-dark: #1F2937;
-            --text-light: #6B7280;
-            --border-color: #E5E7EB;
-            --white: #FFFFFF;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: #F9FAFB;
-        }
-
-        /* Navigation Bar - Professional Style */
-        .navbar {
-            background: var(--white);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            height: 70px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-logo:hover {
-            color: var(--secondary-color);
-        }
-
-        .nav-logo i {
-            font-size: 28px;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 5px;
-            align-items: center;
-        }
-
-        .nav-link {
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            background-color: #F3F4F6;
-            color: var(--primary-color);
-        }
-
-        .nav-link.active {
-            color: var(--primary-color);
-            background-color: #EEF2FF;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 16px;
-            right: 16px;
-            height: 2px;
-            background-color: var(--primary-color);
-            border-radius: 1px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-link.active::after {
-            opacity: 1;
-        }
-
-        .nav-cta {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-left: 20px;
-        }
-
-        .btn-contact {
-            padding: 10px 24px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-contact:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(91, 99, 255, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #5B63FF 0%, #7B68FF 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .hero-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .hero-title {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 18px;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            line-height: 1.6;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 14px 20px 14px 40px;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 0 15px;
-                height: 60px;
-            }
-
-            .nav-logo {
-                font-size: 20px;
-                gap: 8px;
-            }
-
-            .nav-cta {
-                display: none;
-            }
-
-            .hero-title {
-                font-size: 32px;
-            }
-
-            .hero-subtitle {
-                font-size: 16px;
-            }
-
-            .hero-stats {
-                gap: 30px;
-            }
-        }
-
-        /* General Styles */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 40px;
-            color: var(--text-dark);
-        }
-
-        .profile-section {
-            max-width: 700px;
-            margin: 60px auto;
-            padding: 40px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-
-        .profile-section h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .profile-section p {
-            font-size: 16px;
-            color: var(--text-light);
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .highlight {
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .profile-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .link-box {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            color: white;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .link-box i {
-            font-size: 16px;
-        }
-
-        .link-box:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-        }
-
-        .linkedin-link {
-            background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
-        }
-
-        .github-link {
-            background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
-        }
-
-        .instagram-link {
-            background: linear-gradient(135deg, #e1306c 0%, #c41e3a 100%);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-color: #5B63FF; --secondary-color: #0073e6; --text-dark: #1F2937; --text-light: #6B7280; --border-color: #E5E7EB; --white: #FFFFFF; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background-color: #F9FAFB; }
+        .navbar { background: var(--white); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 70px; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 700; color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
+        .nav-logo:hover { color: var(--secondary-color); }
+        .nav-menu { display: flex; list-style: none; gap: 5px; align-items: center; }
+        .nav-link { padding: 8px 16px; border-radius: 6px; text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 15px; transition: all 0.3s ease; }
+        .nav-link:hover { background-color: #F3F4F6; color: var(--primary-color); }
+        .nav-link.active { color: var(--primary-color); background-color: #EEF2FF; }
+        .nav-cta { display: flex; gap: 10px; align-items: center; margin-left: 20px; }
+        .btn-contact { padding: 10px 24px; background: var(--primary-color); color: white; border: none; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+        .btn-contact:hover { background: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(91, 99, 255, 0.3); }
+        .hero { background: linear-gradient(135deg, #5B63FF 0%, #7B68FF 100%); color: white; padding: 80px 20px; text-align: center; }
+        .hero-container { max-width: 1000px; margin: 0 auto; }
+        .hero-title { font-size: 48px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .hero-subtitle { font-size: 18px; margin-bottom: 40px; opacity: 0.95; line-height: 1.6; }
+        .hero-stats { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
+        .stat { display: flex; flex-direction: column; }
+        .stat-number { font-size: 32px; font-weight: 700; }
+        .stat-label { font-size: 14px; opacity: 0.9; }
+        .search-container { max-width: 600px; margin: 0 auto; position: relative; }
+        .search-container input { width: 100%; padding: 14px 20px 14px 40px; border: none; border-radius: 8px; font-size: 15px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #999; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .filters { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin: 40px 0; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .filter-group { display: flex; flex-direction: column; gap: 5px; }
+        .filter-group label { font-weight: 600; font-size: 14px; color: var(--text-dark); }
+        .filter-group select { padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-family: 'Inter', sans-serif; cursor: pointer; }
+        .clear-btn { padding: 8px 16px; background: #f3f4f6; border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
+        .clear-btn:hover { background: var(--primary-color); color: white; }
+        .resources-section { padding: 40px 20px; }
+        .resources-header { margin: 30px 0; }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin: 30px 0; }
+        .resource-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s ease; border: 1px solid var(--border-color); }
+        .resource-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); transform: translateY(-4px); }
+        .resource-link { display: inline-block; padding: 8px 16px; background: var(--primary-color); color: white; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; margin-top: 10px; }
+        .resource-link:hover { background: var(--secondary-color); }
+        .no-results { text-align: center; padding: 60px 20px; }
+        .loading { text-align: center; padding: 60px 20px; }
+        .profile-section { max-width: 700px; margin: 60px auto; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); text-align: center; }
+        .profile-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
+        .link-box { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; color: white; transition: all 0.3s ease; font-size: 14px; }
+        .link-box:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
+        .linkedin-link { background: linear-gradient(135deg, #0077b5 0%, #005885 100%); }
+        .github-link { background: linear-gradient(135deg, #333 0%, #1a1a1a 100%); }
+        .instagram-link { background: linear-gradient(135deg, #e1306c 0%, #c41e3a 100%); }
+        footer { background: #1F2937; color: white; padding: 40px 20px; text-align: center; }
+        @media (max-width: 768px) { .hero-title { font-size: 32px; } .hero-stats { gap: 30px; } .nav-cta { display: none; } }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <a href="index.html" class="nav-logo">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>EduResource Hub</span>
-                </a>
+                <a href="index.html" class="nav-logo"><i class="fas fa-graduation-cap"></i> <span>EduResource Hub</span></a>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link active">Home</a></li>
                     <li><a href="resources.html" class="nav-link">Resources</a></li>
@@ -343,79 +72,52 @@
                     <li><a href="blog.html" class="nav-link">Blog</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
-                <div class="nav-cta">
-                    <a href="contact.html" class="btn-contact">Get Started</a>
-                </div>
+                <div class="nav-cta"><a href="contact.html" class="btn-contact">Get Started</a></div>
             </div>
         </nav>
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-container">
                 <h1 class="hero-title">Find All Educational Resources in One Place</h1>
                 <p class="hero-subtitle">Discover thousands of free and accessible educational resources across all subjects and disciplines</p>
                 <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number" id="total-resources">300+</span>
-                        <span class="stat-label">Total Resources</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" id="total-categories">100+</span>
-                        <span class="stat-label">Categories</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Free Access</span>
-                    </div>
+                    <div class="stat"><span class="stat-number" id="total-resources">300+</span><span class="stat-label">Total Resources</span></div>
+                    <div class="stat"><span class="stat-number" id="total-categories">100+</span><span class="stat-label">Categories</span></div>
+                    <div class="stat"><span class="stat-number">100%</span><span class="stat-label">Free Access</span></div>
                 </div>
-                <div class="search-container">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" placeholder="Search for resources, subjects, or topics...">
-                </div>
+                <div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="search-input" placeholder="Search for resources, subjects, or topics..."></div>
             </div>
         </section>
 
-        <!-- About Me Section -->
+        <section class="resources-section">
+            <div class="container">
+                <div class="filters">
+                    <div class="filter-group"><label for="category-filter">Category:</label><select id="category-filter"><option value="">All Categories</option></select></div>
+                    <div class="filter-group"><label for="type-filter">Type:</label><select id="type-filter"><option value="">All Types</option></select></div>
+                    <div class="filter-group"><label for="access-filter">Access:</label><select id="access-filter"><option value="">All Access Types</option></select></div>
+                    <button id="clear-filters" class="clear-btn"><i class="fas fa-times"></i> Clear Filters</button>
+                </div>
+                <div class="resources-header"><h2>Educational Resources</h2><div class="results-count"><span id="results-count">Loading resources...</span></div></div>
+                <div id="resources-grid" class="resources-grid"></div>
+                <div id="no-results" class="no-results" style="display: none;"><i class="fas fa-search" style="font-size: 48px; color: #999; margin-bottom: 20px;"></i><h3>No resources found</h3><p>Try adjusting your search or filters to find what you're looking for.</p></div>
+                <div id="loading" class="loading"><i class="fas fa-spinner fa-spin" style="font-size: 32px; margin-right: 10px;"></i><p>Loading resources...</p></div>
+            </div>
+        </section>
+
         <section class="profile-section">
             <h2>About Me</h2>
-            <p>
-                I'm <strong>Amar Jaleel</strong>, a Computer Science student passionate about 
-                <span class="highlight">AI</span>, <span class="highlight">cybersecurity</span>, 
-                and <span class="highlight">data analytics</span>.
-            </p>
+            <p>I'm <strong>Amar Jaleel</strong>, a Computer Science student passionate about <span style="color: var(--primary-color); font-weight: 700;">AI</span>, <span style="color: var(--primary-color); font-weight: 700;">cybersecurity</span>, and <span style="color: var(--primary-color); font-weight: 700;">data analytics</span>.</p>
             <div class="profile-links">
-                <a href="https://pk.linkedin.com/in/amarjaleel" target="_blank" class="link-box linkedin-link">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://github.com/amarjaleelbanbhan" target="_blank" class="link-box github-link">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://www.instagram.com/amarjaleel_/" target="_blank" class="link-box instagram-link">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
+                <a href="https://pk.linkedin.com/in/amarjaleel" target="_blank" class="link-box linkedin-link"><i class="fab fa-linkedin"></i> <span>LinkedIn</span></a>
+                <a href="https://github.com/amarjaleelbanbhan" target="_blank" class="link-box github-link"><i class="fab fa-github"></i> <span>GitHub</span></a>
+                <a href="https://www.instagram.com/amarjaleel_/" target="_blank" class="link-box instagram-link"><i class="fab fa-instagram"></i> <span>Instagram</span></a>
             </div>
         </section>
     </main>
 
-    <footer style="background: #1F2937; color: white; padding: 40px 20px; text-align: center;">
-        <p style="margin-bottom: 15px;">© 2025 EduResource Hub. Built with ❤️ for education.</p>
-        <p style="font-size: 14px; opacity: 0.8;">Making education accessible to everyone through curated resources.</p>
-    </footer>
-
-    <script>
-        // Active nav link on scroll
-        window.addEventListener('scroll', () => {
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            navLinks[0].classList.add('active');
-        });
-    </script>
+    <footer><p>© 2025 EduResource Hub. Built with ❤️ for education.</p></footer>
+    <script src="script.js"></script>
 </body>
 </html>
