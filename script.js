@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load resources from JSON file
 async function loadResources() {
     try {
-        // FIXED: Use relative path for GitHub Pages
+        // Fetch the local JSON file
         const response = await fetch('resources_clean.json');
         
         if (!response.ok) {
@@ -44,8 +44,15 @@ async function loadResources() {
 
         filteredResources = [...allResources];
         
-        // Update stats
-        updateStats();
+        // Update stats elements if they exist
+        const totalResourcesSpan = document.getElementById('total-resources');
+        const totalCategoriesSpan = document.getElementById('total-categories');
+        
+        if (totalResourcesSpan && totalCategoriesSpan) {
+            const categories = new Set(allResources.map(resource => resource.Category));
+            totalResourcesSpan.textContent = allResources.length.toLocaleString();
+            totalCategoriesSpan.textContent = categories.size;
+        }
         
         // Populate filters
         populateFilters();
@@ -61,23 +68,10 @@ async function loadResources() {
                     <i class="fas fa-exclamation-triangle" style="font-size: 30px; margin-bottom: 10px;"></i>
                     <h3>Error loading resources</h3>
                     <p>Could not load <code>resources_clean.json</code>.</p>
-                    <p>Please make sure this file is committed to your GitHub repository.</p>
+                    <p>Ensure you ran the cleanup script and pushed the JSON file to GitHub.</p>
                 </div>
             `;
         }
-    }
-}
-
-// Update statistics
-function updateStats() {
-    const totalResourcesSpan = document.getElementById('total-resources');
-    const totalCategoriesSpan = document.getElementById('total-categories');
-
-    // Only update if elements exist on the page
-    if (totalResourcesSpan && totalCategoriesSpan) {
-        const categories = new Set(allResources.map(resource => resource.Category));
-        totalResourcesSpan.textContent = allResources.length.toLocaleString();
-        totalCategoriesSpan.textContent = categories.size;
     }
 }
 
@@ -96,6 +90,7 @@ function populateFilters() {
 
 // Helper function to populate select elements
 function populateSelect(selectElement, options) {
+    // Keep the default "All" option
     const defaultOption = selectElement.options[0];
     selectElement.innerHTML = '';
     selectElement.appendChild(defaultOption);
@@ -158,6 +153,7 @@ function setupEventListeners() {
 // Filter and display resources
 function filterAndDisplayResources() {
     filteredResources = allResources.filter(resource => {
+        // Search filter
         if (currentSearch) {
             const searchableText = [
                 resource['Title/Name'],
@@ -167,9 +163,12 @@ function filterAndDisplayResources() {
                 resource.Type
             ].join(' ').toLowerCase();
             
-            if (!searchableText.includes(currentSearch)) return false;
+            if (!searchableText.includes(currentSearch)) {
+                return false;
+            }
         }
 
+        // Dropdown filters
         if (currentFilters.category && resource.Category !== currentFilters.category) return false;
         if (currentFilters.type && resource.Type !== currentFilters.type) return false;
         if (currentFilters.access && resource['Access type'] !== currentFilters.access) return false;
@@ -211,10 +210,6 @@ function createResourceCard(resource) {
     const whyUseful = resource["Why it's useful for students"] || '';
     const link = resource.Link || '#';
 
-    // Clean up escaped quotes in the data
-    const cleanDescription = description.replace(/\\"/g, '"').replace(/\\'/g, "'");
-    const cleanWhyUseful = whyUseful.replace(/\\"/g, '"').replace(/\\'/g, "'");
-
     return `
         <div class="resource-card" onclick="window.open('${link}', '_blank')">
             <div class="resource-header">
@@ -233,9 +228,9 @@ function createResourceCard(resource) {
                 <span class="tag tag-access">${accessType}</span>
             </div>
             
-            ${cleanDescription ? `<div class="resource-description">${cleanDescription}</div>` : ''}
+            ${description ? `<div class="resource-description">${description}</div>` : ''}
             
-            ${cleanWhyUseful ? `<div class="resource-why"><strong>Why it's useful:</strong> ${cleanWhyUseful}</div>` : ''}
+            ${whyUseful ? `<div class="resource-why"><strong>Why it's useful:</strong> ${whyUseful}</div>` : ''}
             
             <div class="resource-footer">
                 <a href="${link}" target="_blank" class="external-link" onclick="event.stopPropagation()">
@@ -246,7 +241,7 @@ function createResourceCard(resource) {
     `;
 }
 
-// Keyboard shortcuts
+// Keyboard shortcut
 document.addEventListener('keydown', function(e) {
     if (e.key === '/' && !e.ctrlKey && !e.metaKey && searchInput) {
         e.preventDefault();
